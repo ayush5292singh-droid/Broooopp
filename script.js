@@ -133,3 +133,39 @@ document.getElementById("result").innerHTML +=
 
 
 }
+// ROBOT VOICE
+
+function speak(text){
+
+let speech = new SpeechSynthesisUtterance(text);
+
+speech.rate = 1;
+
+speech.pitch = 1.2;
+
+window.speechSynthesis.speak(speech);
+
+}
+
+
+
+// DARK MODE
+
+function toggleMode(){
+
+document.body.classList.toggle("dark");
+
+}
+
+
+
+// Speak advice after showing result
+
+function robotSpeak(){
+
+let message =
+document.getElementById("result").innerText;
+setTimeout(robotSpeak,500);
+speak(message);
+
+}
