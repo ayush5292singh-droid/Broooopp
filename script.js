@@ -72,52 +72,50 @@ document.getElementById("result").innerHTML =
 
 }
 let totalExpense = 0;
-
+let expenses = [];
 
 function addExpense(){
 
-let expense =
+let category =
+document.getElementById("category").value;
+
+let amount =
 Number(document.getElementById("expense").value);
 
+if(category==="" || amount<=0){
 
-if(expense <= 0){
-
-alert("Enter valid expense");
+alert("Enter category and amount");
 
 return;
 
 }
 
+expenses.push({
+category:category,
+amount:amount
+});
 
-totalExpense += expense;
+totalExpense += amount;
 
+let html="";
 
-document.getElementById("expenseList").innerHTML =
+expenses.forEach(function(item){
 
-"💸 Total Spent: ₹" + totalExpense;
+html += "<p>📌 <b>"+item.category+"</b> : ₹"+item.amount+"</p>";
 
+});
+
+html += "<hr>";
+
+html += "<h3>Total Expenses: ₹"+totalExpense+"</h3>";
+
+html += "<h3>Remaining: ₹"+(salary-totalExpense)+"</h3>";
+
+document.getElementById("expenseList").innerHTML = html;
+
+document.getElementById("category").value="";
 
 document.getElementById("expense").value="";
-
-
-checkSpending();
-
-}
-
-
-
-function checkSpending(){
-
-
-let limit = salary * 0.60;
-
-
-if(totalExpense > limit){
-
-
-document.getElementById("result").innerHTML +=
-
-"<br><br>⚠️ Robot Advice: You are spending more than recommended. Try saving more!";
 
 }
 
