@@ -71,3 +71,65 @@ document.getElementById("result").innerHTML =
 "<br><br>💡 Advice: Save first, then spend. Avoid unnecessary expenses!";
 
 }
+let totalExpense = 0;
+
+
+function addExpense(){
+
+let expense =
+Number(document.getElementById("expense").value);
+
+
+if(expense <= 0){
+
+alert("Enter valid expense");
+
+return;
+
+}
+
+
+totalExpense += expense;
+
+
+document.getElementById("expenseList").innerHTML =
+
+"💸 Total Spent: ₹" + totalExpense;
+
+
+document.getElementById("expense").value="";
+
+
+checkSpending();
+
+}
+
+
+
+function checkSpending(){
+
+
+let limit = salary * 0.60;
+
+
+if(totalExpense > limit){
+
+
+document.getElementById("result").innerHTML +=
+
+"<br><br>⚠️ Robot Advice: You are spending more than recommended. Try saving more!";
+
+}
+
+
+else{
+
+
+document.getElementById("result").innerHTML +=
+
+"<br><br>✅ Robot Advice: Your spending is under control!";
+
+}
+
+
+}
